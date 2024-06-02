@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Button } from "antd";
 import type { MenuProps } from "antd";
 import {
   DesktopOutlined,
@@ -9,6 +9,8 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import Sidebaritems from "@/app/constants/Sidebaritems";
+import { USER_ROLE } from "@/app/constants/role";
 
 const { Sider } = Layout;
 
@@ -45,18 +47,42 @@ const items: MenuItem[] = [
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
+  const role = USER_ROLE.STUDENT;
+
   return (
     <Sider
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
+      width={280}
+      style={{
+        overflow: "auto",
+        height: "100vh",
+        position: "sticky",
+        left: 0,
+        top: 0,
+        bottom: 0,
+      }}
     >
+      <div
+        style={{
+          color: "white",
+          fontSize: "1.25rem",
+          textAlign: "center",
+          fontWeight: "bold",
+          marginBottom: "1rem",
+          marginTop: "1rem",
+        }}
+      >
+        University Managemnt
+      </div>
+
       <div className="demo-logo-vertical" />
       <Menu
         theme="dark"
         defaultSelectedKeys={["1"]}
         mode="inline"
-        items={items}
+        items={Sidebaritems(role)}
       />
     </Sider>
   );
