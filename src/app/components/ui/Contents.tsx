@@ -1,7 +1,6 @@
 "use client";
 
 import { Layout } from "antd";
-
 const { Content } = Layout;
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
